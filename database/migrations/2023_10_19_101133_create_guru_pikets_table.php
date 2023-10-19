@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wali_kelas', function (Blueprint $table) {
+        Schema::create('guru_pikets', function (Blueprint $table) {
+            $table->integer('id_piket', true, false)->nullable(false);
             $table->integer('id_guru', false)->nullable(false);
-            $table->foreign('id_guru')
-                ->references('id_guru')->on('guru')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('id_walas', true, false)->nullable(false);
             $table->timestamps();
 
-            
+            $table->foreign('id_guru')
+            ->references('id_guru')->on('guru')
+            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wali_kelas');
+        Schema::dropIfExists('guru_pikets');
     }
 };

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerDashboard;
 
@@ -14,11 +15,9 @@ use App\Http\Controllers\ControllerDashboard;
 |
 */
 
-Route::get('/', function () {
-    
+// Testing Login
+ Route::prefix('dashboard')->group(function () {
+    Route::get('/', [ControllerDashboard::class, 'index']);
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
     
 });
-Route::prefix('/dashboard')->group(function () {
-        Route::get('/', [ControllerDashboard::class, 'index']);
-        
-    });

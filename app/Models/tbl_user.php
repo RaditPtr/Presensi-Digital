@@ -12,4 +12,8 @@ class tbl_user extends Model
     protected $primaryKey = 'id_user';
     protected $fillable = ['username','password','role'];
     public $timestamps = false;
+
 }
+
+
+
