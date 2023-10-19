@@ -12,4 +12,6 @@ class angkatan extends Model
     protected $primaryKey = 'id_angkatan';
     protected $fillable = ['tahun_masuk', 'tahun_keluar'];
     public $timestamps = false;
+
+    // public function 
 }

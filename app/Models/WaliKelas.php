@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tbl_user extends Model
+class WaliKelas extends Model
 {
     use HasFactory;
-    protected $table = 'tbl_user';
-    protected $primaryKey = 'id_user';
-    protected $fillable = ['username','password','role'];
+    protected $table = 'wali_kelas';
+    protected $primaryKey = 'id_walas';
+    protected $fillable = ['id_guru'];
     public $timestamps = false;
 
+    
 }

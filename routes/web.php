@@ -21,6 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 
 // Testing Login
-Route::prefix('dashboard')->group(function () {
+// Route::prefix('dashboard')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
-});
+// });
