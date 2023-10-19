@@ -14,3 +14,6 @@ class tbl_user extends Authenticatable
     public $timestamps = false;
 
 }
+
+
+

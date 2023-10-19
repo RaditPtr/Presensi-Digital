@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guru_piket', function (Blueprint $table) {
-            $table->integer('id_piket', true, false)->nullable(false);
+        Schema::create('wali_kelas', function (Blueprint $table) {
+            $table->integer('id_walas', true)->nullable(false);
             $table->integer('id_guru', false)->nullable(false);
             $table->timestamps();
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guru_piket');
+        Schema::dropIfExists('wali_kelas');
     }
 };

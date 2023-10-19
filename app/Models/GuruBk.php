@@ -12,4 +12,16 @@ class GuruBk extends Model
     protected $primaryKey = 'id_bk';
     protected $fillable = ['id_guru'];
     public $timestamps = false;
+
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
+
+    // public function getGuruAttribute()
+    // {
+    //     return Guru::find($this->attributes['id_guru'])->guru;
+    // }
+
 }
