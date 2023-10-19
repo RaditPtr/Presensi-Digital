@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('guru_piket', function (Blueprint $table) {
-            $table->integer('id_piket', true, false)->nullable(false);
             $table->integer('id_guru', false)->nullable(false);
+            $table->integer('id_piket', true, false)->nullable(false);
             $table->timestamps();
 
             $table->foreign('id_guru')
