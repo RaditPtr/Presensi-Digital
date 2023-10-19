@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +15,7 @@
 
 <body class="body">
     <div class="container py-5">
-        <div class="w-75 center bg-white border rounded px-3 py-3 mx-auto">
+        <div class="w-25 bg-white center border rounded px-3 py-3 mx-auto">
             <h1>Login</h1>
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -46,5 +43,3 @@
         </div>
     </div>
 </body>
-
-</html>
