@@ -23,7 +23,7 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::get('/home', function () {
-    return redirect('dashboard/surat');
+    return redirect('dashboard');
 });
 
 Route::middleware(['auth'])->group(function () {
