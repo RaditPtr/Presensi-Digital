@@ -76,11 +76,20 @@
         </div>
     </nav>
 
+<<<<<<< HEAD
     <div class="container">
         @yield('content')
     </div>
+=======
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+>>>>>>> f533afe897b8682442d4c2c52d57d80e28e532d8
 </body>
 <footer>
     @yield('footer')
 </footer>
+<<<<<<< HEAD
 <html>
+=======
+
+</html>
+>>>>>>> f533afe897b8682442d4c2c52d57d80e28e532d8
