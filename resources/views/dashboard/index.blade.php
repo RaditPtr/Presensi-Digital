@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card bg-white" >
                 <div class="card-header">
                     <span class="h1">
                         Data Guru
@@ -24,19 +24,26 @@
                                 <tr>
                                     <th>ID GURU</th>
                                     <th>NAMA GURU</th>
+                                    <th>FOTO GURU</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($guru as $g)
                                     <tr>
-                                        <td>{{ $s->id_guru }}</td>
-                                        <td>{{ $s->nama_guru }}</td>
+                                        <td>{{ $g->id_guru }}</td>
+                                        <td>{{ $g->nama_guru }}</td>
+                                        <td >
+                                            @if ($g->foto_guru)
+                                                <img src="{{ url('foto') . '/' . $g->foto_guru }} "
+                                                    style="max-width: 250px; height: auto;" />
+                                            @endif
+                                        </td>
                                         <td>
-                                            <a href="surat/edit/{{ $s->id_guru }}">
+                                            <a href="dashboard/edit/{{ $g->id_guru }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
-                                            <btn class="btn btn-danger btnHapus" idGuru="{{ $s->id_guru }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" idGuru="{{ $g->id_guru }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -52,4 +59,40 @@
     </div>
 @endsection
 
+@section('footer')
+    <script type="module">
+        $('.DataTable tbody').on('click', '.btnHapus', function(a) {
+            a.preventDefault();
+            let idGuru = $(this).closest('.btnHapus').attr('idGuru');
+            swal.fire({
+                title: "Apakah anda ingin menghapus data ini?",
+                showCancelButton: true,
+                confirmButtonText: 'Setuju',
+                cancelButtonText: `Batal`,
+                confirmButtonColor: 'red'
 
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //Ajax Delete
+                    $.ajax({
+                        type: 'DELETE',
+                        url: 'dashboard/hapus',
+                        data: {
+                            id_guru: idGuru,
+                            _token: "{{ csrf_token() }}"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                swal.fire('Berhasil di hapus!', '', 'success').then(function() {
+                                    //Refresh Halaman
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+@endsection

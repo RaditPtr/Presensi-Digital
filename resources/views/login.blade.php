@@ -1,45 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Login</title>
+    @vite(['resources/sass/app.scss','resources/js/app.js'])
     <style>
-        .body{
+        .spacer {
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        .tengah {
+            margin-left: 25%;
+            margin-top: 10%;
+            width: 50%;
+            padding: 10px;
+        }
+
+        body{
             background-color: #80B3FF;
+        }
+        .card{
+            height: 400px;
+        }
+        .cuy{
+            margin: auto;
+        }
+        .nih{
+            margin: auto;
+        }
+        .logsy{
+            text-align: center;
+            padding-bottom: 45px;
+        }
+        .label{
+            padding-bottom: 5px;
+        }
+        .cet {
+            padding-bottom: 10px;
         }
     </style>
 </head>
 
-<body class="body">
-    <div class="container py-5">
-        <div class="w-25 bg-white center border rounded px-3 py-3 mx-auto">
-            <h1>Login</h1>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $item)
-                            <li>{{ $item }}</li>
-                        @endforeach
-                    </ul>
+<body>
+    <div class="container spacer">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-4 tengah">
+                    <form method="POST">
+                        <div class="card bg-white">
+                            <div class="container cuy">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <img src={{ asset('img/loginpict.png') }} alt="description of myimage" width="300">
+                                    </div>
+                                    <div class="col-sm nih">
+                                        <div>
+                                            <h2 class="logsy">LOGIN</h2>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="label">Username</label>
+                                            <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Masukkan Username" />
+                                        </div>
+                                        <div class="form-group cet">
+                                            <label class="label">Password</label>
+                                            <input type="password" class="form-control" name="password" placeholder="Masukkan Password" />
+                                            @csrf
+                                        </div>
+                                        <button type="submit" name="submit" class="btn btn-success">LOGIN</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            @endif
-            <form action="" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="username" value="{{ old('username') }}" name="username" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control">
-                </div>
-                <div class="mb-3 d-grid">
-                    <button name="submit" type="submit" class="btn btn-primary">Login</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </body>
+<footer>
+    <script type='module'>
+        $('.btnLogin').on('click', function(a){
+            axios.post('auth/check', {
+                username : $('#userName').val(),
+                password : $('#passWord').val(),
+                _token : '{{csrf_token()}}'
+            }).then(function(response){
+
+                if(response.data.success){
+                    window.location.href = response.data.redirect_url;   
+                }else{
+                    swal.fire('Gagal login, username atau password salah', '', 'error');
+                }
+            }).catch(function(error){
+                if(error.response.status === 422){
+                    swal.fire(error.response.data.message, '', 'error')
+                }else{
+                    swal.fire('gagal login, username/password salah')
+                }
+            });
+        });
+    </script>
+</footer>
+
+</html>
