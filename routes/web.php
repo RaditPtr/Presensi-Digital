@@ -31,7 +31,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/tambah', [DashboardController::class, 'create']);
     Route::post('/dashboard/simpan', [DashboardController::class, 'store']);
-
+    Route::delete('/dashboard/hapus', [DashboardController::class, 'destroy']);
+    Route::get('/dashboard/edit/{id}', [DashboardController::class, 'edit']);
+    Route::post('/dashboard/edit/simpan', [DashboardController::class, 'update']);
 
     Route::get('/logout', [AuthController::class, 'logout']);
 });

@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('guru', function (Blueprint $table) {
             $table->integer('id_guru', true)->nullable(false);
-            $table->integer('id_user', false)->nullable(false);
             $table->string('nama_guru', 60)->nullable(false);
             $table->text('foto_guru')->nullable(false);
-            $table->timestamps();
+            // $table->timestamps();
 
-            $table->foreign('id_user')
-            ->references('id_user')->on('tbl_user')
-            ->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('id_user')
+            // ->references('id_user')->on('tbl_user')
+            // ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
