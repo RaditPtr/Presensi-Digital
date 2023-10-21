@@ -1,13 +1,12 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\tbl_user;
+use App\Models\WaliKelas;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class TblUserSeeder extends Seeder
+class WaliKelasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,20 +15,19 @@ class TblUserSeeder extends Seeder
     {
         $userData = [
             [
-                'username' => 'tatausaha',
-                'role' => 'tatausaha',
-                'password' => Hash::make('123')
-            ],
-            [
-                'username' => 'walikelas',
-                'role' => 'walikelas',
-                'password' => Hash::make('123')
-            ],
+                'nis' => 'tatausaha',
+                'id_user' => 'tatausaha',
+                'id_kelas' => Hash::make('123'),
+                'nama_siswa' => 'tatausaha',
+                'jensi_kelamin' => 'tatausaha',
+                'foto_siswa' => 'images/guy.png'
+
+            ]
         ];
 
         // Melakukan looping data dengan foreach
         foreach ($userData as $user => $val) {
-            tbl_user::create($val);
+            WaliKelas::create($val);
         }
     }
 }

@@ -19,9 +19,9 @@ return new class extends Migration
             $table->time('waktu_presensi');
             $table->text('foto_bukti')->nullable(false);
 
-            // $table->foreign('nis')
-            //     ->references('nis')->on('siswa')
-            //     ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('nis')
+                ->references('nis')->on('siswa')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -18,13 +18,14 @@ return new class extends Migration
             $table->string('jabatan', 60);
 
             // $table->foreign('id_user')
-            // ->references('id_user')->on('tbl_user')
-            // ->onUpdate('cascade')->onDelete('cascade');
+            //     ->references('id_user')->on('tbl_user')
+            //     ->onUpdate('cascade')->onDelete('cascade');
 
             // $table->integer('nis')
-            // ->references('nis')->on('siswa')
-            // ->onUpdate('cascade')->onDelete('cascade');
+            //     ->references('nis')->on('siswa')
+            //     ->onUpdate('cascade')->onDelete('cascade');
         });
+        
     }
 
     /**

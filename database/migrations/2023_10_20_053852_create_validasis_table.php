@@ -19,9 +19,9 @@ return new class extends Migration
             $table->text('pernyataan_ketidakhadiran')->nullable(false);
             $table->string('alasan_ketidakhadiran', 60)->nullable(false);
 
-            // $table->foreign('id_presensi')
-            //     ->references('id_presensi')->on('presensi_siswa')
-            //     ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_presensi')
+                ->references('id_presensi')->on('presensi_siswa')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

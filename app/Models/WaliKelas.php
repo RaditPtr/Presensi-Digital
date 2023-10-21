@@ -23,4 +23,9 @@ class WaliKelas extends Model
         return Guru::find($this->attributes['id_guru'])->guru;
     }
 
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class, 'id_walas');
+    }
+
 }

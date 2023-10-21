@@ -20,7 +20,7 @@ class Kelas extends Model
 
     public function angkatan()
     {
-        return $this->belongsTo(angkatan::class);
+        return $this->belongsTo(Angkatan::class);
     }
 
     public function wali_kelas()

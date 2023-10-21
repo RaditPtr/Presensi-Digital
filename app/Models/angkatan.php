@@ -13,5 +13,10 @@ class angkatan extends Model
     protected $fillable = ['tahun_masuk', 'tahun_keluar'];
     public $timestamps = false;
 
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class, 'id_angkatan');
+    }
+
     // public function 
 }
